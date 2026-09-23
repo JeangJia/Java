@@ -1,4 +1,4 @@
-package com.jeang.variable;
+package com.jeang.study.a_variable;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package com.jeang.study.b_ifDemo;
+package com.jeang.study.b_switch;
 
 import java.util.Scanner;
 

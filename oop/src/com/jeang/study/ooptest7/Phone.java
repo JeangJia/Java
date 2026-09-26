@@ -1,4 +1,4 @@
-package com.jeang.study.opptest7;
+package com.jeang.study.ooptest7;
 
 public class Phone extends SmartDevice {
     public void call(){

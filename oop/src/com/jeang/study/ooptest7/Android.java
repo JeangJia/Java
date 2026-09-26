@@ -1,4 +1,4 @@
-package com.jeang.study.opptest7;
+package com.jeang.study.ooptest7;
 
 public class Android extends Phone {
     public void useNFC() {

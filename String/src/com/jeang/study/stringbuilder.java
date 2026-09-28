@@ -10,6 +10,7 @@ public class stringbuilder {
             reverse()                 反转
             int length()              获取长度
             toString                  变回字符串
+            setCharAt(int index, char ch)      修改指定位置的字符
     */
     public static void main(String[] args) {
         StringBuilder sb1 = new StringBuilder();

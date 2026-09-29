@@ -49,6 +49,15 @@ public class Login {
         while (f > 0) {
             System.out.print("输入密码：");
             pwd = sc.next();
+            while (true) {
+                String yzm = getYzm();
+                System.out.println("验证码：" + yzm);
+                System.out.print("输入验证码：");
+                String i = sc.next();
+                if (i.equals(yzm))
+                    break;
+                else System.out.println("验证码错误！");
+            }
             if (checkPwd_l(list, name, pwd, f)) break;
             f--;
         }
@@ -57,6 +66,7 @@ public class Login {
             System.out.println(name + "已冻结");
         } else {
             System.out.println("登录成功！");
+            Game.start(name);
         }
 
 
@@ -93,7 +103,8 @@ public class Login {
         if (PWD.equals(pwd)) {
             return true;
         } else {
-            System.out.println("你还有" + (f - 1) + "次登录机会！");
+            if (f - 1 != 0)
+                System.out.println("密码错误！\n你还有" + (f - 1) + "次登录机会！");
         }
         return false;
     }
@@ -123,14 +134,14 @@ public class Login {
 
     public static boolean checkName(ArrayList<User> list, String name) {
         for (int i = 0; i < list.size(); i++) {
-            if (!list.get(i).getStatus()) {
-                System.out.println(name + "已被冻结！");
+            if (list.get(i).getName().equals(name)) {
+                System.out.println("该用户已存在！");
                 return false;
             }
         }
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getName().equals(name)) {
-                System.out.println("该用户已存在！");
+            if (!list.get(i).getStatus()) {
+                System.out.println(name + "已被冻结！");
                 return false;
             }
         }

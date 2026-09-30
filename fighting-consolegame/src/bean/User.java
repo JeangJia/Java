@@ -8,7 +8,7 @@ public class User {
     private String pwd;
     private boolean status;
 
-    String s = "jeang";
+    String scom = "jeang";
 
     //    构造函数
     public User() {
@@ -24,7 +24,7 @@ public class User {
     }
 
     public String createId() {
-        StringBuffer ret = new StringBuffer(s);
+        StringBuffer ret = new StringBuffer(scom);
         Random r = new Random();
         for (int i = 0; i < 5; i++) {
             ret.append(r.nextInt(10));

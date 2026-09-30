@@ -1,6 +1,7 @@
 package bean;
 
 public class Role {
+    private String name;
     private int hp;
     private int ak;
     private int dp;
@@ -9,7 +10,7 @@ public class Role {
     int initak = 10;
     int initdp = 0;
 
-    int mul=20;
+    int mul = 20;
     int inithp_mul = 10;
     int initak_mul = 2;
     int initdp_mul = 1;
@@ -18,13 +19,31 @@ public class Role {
     public Role() {
     }
 
-    public Role(int hp, int ak, int dp) {
+    public Role(String name,int hp, int ak, int dp) {
+        this.name = name;
         this.hp = hp * inithp_mul + inithp;
         this.ak = ak * initak_mul + initak;
         this.dp = dp * initdp_mul + initdp;
     }
 
     //    get/set
+    public int getInithp_mul(){
+        return inithp_mul;
+    }
+    public int getInitak_mul(){
+        return initak_mul;
+    }
+    public int getInitdp_mul(){
+        return initdp_mul;
+    }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public int getHp() {
         return hp;
     }

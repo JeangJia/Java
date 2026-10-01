@@ -3,9 +3,9 @@ package com.jeang;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Utils {
+public class StudentUtils {
 
-    private Utils() {
+    private StudentUtils() {
     }
 
     public static void initlist(ArrayList<Student> list) {

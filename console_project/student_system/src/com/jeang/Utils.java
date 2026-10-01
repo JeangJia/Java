@@ -5,6 +5,9 @@ import java.util.Scanner;
 
 public class Utils {
 
+    private Utils() {
+    }
+
     public static void initlist(ArrayList<Student> list) {
         list.add(new Student("1001", "张三", "20", "12345678901"));
         list.add(new Student("1002", "李四", "21", "12345678902"));

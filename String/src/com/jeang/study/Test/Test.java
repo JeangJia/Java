@@ -4,23 +4,17 @@ import java.util.ArrayList;
 
 public class Test {
     public static void main(String[] args) {
-        ArrayList<Student> list = new ArrayList<>();
-        list.add(new Student(1, "Jeang", 18));
-        list.add(new Student(2, "Jeang2", 19));
-        list.add(new Student(3, "Jeang3", 20));
-        list.add(new Student(0, "Jeang4", 21));
-        for (int i = 0; i < list.size(); i++) {
-            Student st = list.get(i);
-            System.out.print(st.getId() + " " + st.getName() + " " + st.getAge() + " ");
-            System.out.println(getStudentInfo(list, st.getId()));
-        }
+        ArrayList<Phone> list = new ArrayList<>();
+        list.add(new Phone("iphone", 8000));
+        list.add(new Phone("huawei", 2000));
+        list.add(new Phone("xiaomi", 3000));
+        showlist(list,3000);
     }
-
-    public static int getStudentInfo(ArrayList<Student> list, int id) {
+    public static void showlist(ArrayList<Phone> list,int top){
         for (int i = 0; i < list.size(); i++) {
-            Student st = list.get(i);
-            if (st.getId() == id) return i;
+            if(list.get(i).getPrice()<=top){
+                System.out.println(list.get(i).getBrand()+" "+list.get(i).getPrice());
+            }
         }
-        return -1;
     }
 }

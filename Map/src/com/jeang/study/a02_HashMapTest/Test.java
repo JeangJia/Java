@@ -1,4 +1,4 @@
-package com.jeang.study.a02_HashTest;
+package com.jeang.study.a02_HashMapTest;
 
 import java.util.HashMap;
 

@@ -11,8 +11,6 @@ public class Test {
         hs.put(new Student("Jeang", 18), "gongdong");
         hs.put(new Student("jeang", 18), "shanghai");
 
-
-
         hs.forEach((k, v) -> {
             System.out.println(k.getName() + " " + k.getAge() + " " + v);
         });

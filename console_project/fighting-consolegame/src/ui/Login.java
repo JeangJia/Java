@@ -1,6 +1,7 @@
 package ui;
 
-import bean.User;
+import domain.User;
+import domain.UserList;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -12,12 +13,14 @@ public class Login {
 
     public static void start() {
         ArrayList<User> userlist = new ArrayList<>();
+        UserList.init(userlist);
         while (true) {
             System.out.println("╔════════════════════════════════╗");
             System.out.println("    🎮 欢迎来到文字格斗游戏 🎮   ");
             System.out.println("╚════════════════════════════════╝");
             System.out.println("请选择操作：1登录 2注册 3退出");
             switch (readInt()) {
+                case 0 -> UserList.showList(userlist);
                 case 1 -> login(userlist);
                 case 2 -> register(userlist);
                 case 3 -> {
@@ -52,14 +55,6 @@ public class Login {
             }
         }
         return null;
-    }
-
-    public static void showList(ArrayList<User> list) {
-        System.out.println("----------------------");
-        for (User u : list) {
-            System.out.println(u.getName() + ":" + u.getPwd() + " 状态：" + (u.getStatus() ? "正常" : "冻结"));
-        }
-        System.out.println("----------------------");
     }
 
     public static void login(ArrayList<User> list) {
@@ -118,7 +113,7 @@ public class Login {
         }
 
         System.out.println("登录成功！");
-        Game.start(user.getName());
+//        Game.start(user.getName());
     }
 
     public static void register(ArrayList<User> list) {

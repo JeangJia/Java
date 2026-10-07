@@ -67,5 +67,6 @@ public class StartGame {
             System.out.print(h.getSkills().get(i));
             if (i != h.getSkills().toArray().length - 1) System.out.print(", ");
         }
+        System.out.println();
     }
 }

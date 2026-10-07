@@ -36,7 +36,7 @@ public class StartFight {
             enemyList = EnemyList.initEnemyList();
             EnemyCharacter enemy = enemyList.get(r.nextInt(enemyList.size()));
             System.out.println();
-            System.out.println("⚔\uFE0F 第 " + round + " 场战斗开始！对手: " + enemy.getName());
+            System.out.println("----------⚔\uFE0F 第 " + round + " 场战斗开始！对手: " + enemy.getName() + "-------------");
 //            属性设置
             int growHp = (round - 1) * 10;
             enemy.setHp(enemy.getHp() + growHp);
@@ -61,7 +61,7 @@ public class StartFight {
                     switch (i) {
                         case 1 -> {
                             int d = enemy.takeDamage(role.getAk());
-                            System.out.println("你使用了普通攻击! 造成" + d + "伤害!");
+                            System.out.println(">>>>>>>你使用了普通攻击! 造成" + d + "伤害!<<<<<<<<");
                             f = 1;
                         }
                         case 2 -> {
@@ -71,7 +71,7 @@ public class StartFight {
                             } else {
                                 int a = role.getAk() * 180 / 100;
                                 int d = enemy.takeDamage(a);
-                                System.out.println("💥消耗10HP 使用了强力一击! 造成了" + d + "伤害!");
+                                System.out.println(">>>>>>>>💥消耗10HP 使用了强力一击! 造成了" + d + "伤害!<<<<<<<<");
                                 role.setHp(role.getHp() - 10);
                                 f = 1;
                             }
@@ -82,7 +82,8 @@ public class StartFight {
                                 f = 0;
                             } else {
                                 int h = r.nextInt(20);
-                                System.out.println("消耗10HP 恢复了" + h + "血量!");
+                                System.out.println(">>>>>>>>消耗10HP 恢复了" + h + "血量!<<<<<<<<<");
+                                role.setHp(role.getHp() - 10);
                                 role.heal(h);
                                 f = 1;
                             }
@@ -99,6 +100,19 @@ public class StartFight {
                 //判断对方是否存活
                 if (!enemy.isAlive()) {
                     System.out.println("👏恭喜你击败了 " + enemy.getName());
+                    // 战斗结束 属性提升
+                    int h = r.nextInt(20, 41);
+                    role.heal(h);
+                    wins++;
+                    System.out.println("❤‍🩹恢复 " + h + " 血量" + " " + "当前血量: " + role.getHp());
+                    System.out.println("🏆当前胜场: " + wins);
+                    if (wins != 0 && wins % 3 == 0) {
+                        // 这里只加"这一次"的增量。乘 wins/3 会把之前加过的再算一遍
+                        role.setHp(role.getHp() + 30);
+                        role.setMaxHp(role.getMaxHp() + 30);
+                        role.setAk(role.getAk() + 5);
+                        role.setDf(role.getDf() + 3);
+                    }
                     break;
                 }
                 // 对方回合
@@ -116,19 +130,6 @@ public class StartFight {
                 System.out.print("是否继续游戏(y/n):");
                 String t = sc.next();
                 if (t.equalsIgnoreCase("y")) {
-                    // 战斗结束 属性提升
-                    int h = r.nextInt(20, 41);
-                    role.heal(h);
-                    System.out.println("❤‍🩹恢复 " + h + " 血量");
-                    wins++;
-                    System.out.println("🏆当前胜场: " + wins);
-                    if (wins != 0 && wins % 3 == 0) {
-                        // 这里只加"这一次"的增量。乘 wins/3 会把之前加过的再算一遍
-                        role.setHp(role.getHp() + 30);
-                        role.setMaxHp(role.getMaxHp() + 30);
-                        role.setAk(role.getAk() + 5);
-                        role.setDf(role.getDf() + 3);
-                    }
                     break;
                 } else if (t.equalsIgnoreCase("n")) {
                     f = true;
@@ -164,7 +165,7 @@ public class StartFight {
             case "快速攻击" -> {
                 System.out.println(enemy.getName() + "使用了快速攻击!");
                 for (int i = 0; i < 2; i++) {
-                    damage += receiveAk(role, enemy.getAk()/2);
+                    damage += receiveAk(role, enemy.getAk() / 2);
                 }
             }
             case "防御姿态" -> {
@@ -177,7 +178,7 @@ public class StartFight {
             }
         }
         if (damage > 0) {
-            System.out.println("给你造成了 " + damage + " 的伤害!");
+            System.out.println(">>>>>>>>>" + enemy.getName() + "使用了" + way + "给你造成了 " + damage + " 的伤害!<<<<<<<<");
         }
         System.out.println();
     }

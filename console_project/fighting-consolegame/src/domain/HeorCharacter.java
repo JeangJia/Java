@@ -2,46 +2,35 @@ package domain;
 
 import java.util.ArrayList;
 
-// 敌方人物
+// 我方游戏角色
 public class HeorCharacter extends Character {
 
-    private String skills;
-    private boolean dfBuff;
+    ArrayList<String> skills = new ArrayList<>();
 
-    public HeorCharacter() {
+
+    public HeorCharacter(ArrayList<String> skills) {
+        this.skills = skills;
     }
 
-    public HeorCharacter(String name, int hp, int ak, int df, String skills, boolean dfBuff) {
+    public HeorCharacter(String name, int hp, int ak, int df, ArrayList<String> skills) {
         super(name, hp, ak, df);
         this.skills = skills;
-        this.dfBuff = dfBuff;
     }
 
-//    如果有dfBuff 重写takeDamage
+    //重写toString
     @Override
-    public void takeDamage(int a) {
-        if (dfBuff) {
-            a = a / 2 > 1 ? a / 2 : 1;
-        }
-        super.takeDamage(a);
+    public String toString() {
+        return this.getName() + " hp:" + this.getHp() + " ak:" + this.getAk() + " df:" + this.getDf();
     }
 
 
     //get/set
 
-    public String getSkills() {
+    public ArrayList<String> getSkills() {
         return skills;
     }
 
-    public void setSkills(String skills) {
+    public void setSkills(ArrayList<String> skills) {
         this.skills = skills;
-    }
-
-    public boolean isDfBuff() {
-        return dfBuff;
-    }
-
-    public void setDfBuff(boolean dfBuff) {
-        this.dfBuff = dfBuff;
     }
 }

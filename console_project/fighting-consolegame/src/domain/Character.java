@@ -24,10 +24,13 @@ public class Character {
         return hp > 0;
     }
 
-    //    受到伤害
-    public void takeDamage(int a) {
-        hp -= a;
+    //    受到伤害,返回实际掉的血(扣完防御、保底1点、且不超过剩余血量)
+    public int takeDamage(int a) {
+        int dmg = Math.max(1, a - df);
+        int before = hp;
+        hp -= dmg;
         if (hp < 0) hp = 0;
+        return before - hp;
     }
 
     //    恢复血量

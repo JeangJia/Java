@@ -113,7 +113,8 @@ public class Login {
         }
 
         System.out.println("登录成功！");
-//        Game.start(user.getName());
+        // 开始游戏
+        StartGame.start(user.getName());
     }
 
     public static void register(ArrayList<User> list) {

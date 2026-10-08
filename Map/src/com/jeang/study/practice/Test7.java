@@ -3,6 +3,9 @@ package com.jeang.study.practice;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Test7 {
     public static void main(String[] args) {
@@ -24,8 +27,21 @@ public class Test7 {
         ArrayList<String> womanList = new ArrayList<>();
         Collections.addAll(womanList, "杨颖,21", "杨幂,22", "杨千嬅,23", "刘诗诗,24", "古力娜扎,25", "迪丽热巴,26");
 
-        // 1
-
-
+        List<String> list = Stream.concat(
+                manList.stream()
+                        .filter(s -> s.split(",")[0].length() == 3)
+                        .limit(2),
+                womanList.stream()
+                        .filter(s -> s.startsWith("杨"))
+                        .skip(1)
+        ).collect(Collectors.toList());
+//        list.forEach(s -> System.out.println(s));
+        Map<String, Integer> map = list.stream().collect(Collectors.toMap(
+                s -> s.split(",")[0],
+                s -> Integer.parseInt(s.split(",")[1])
+        ));
+        map.forEach((k, v) -> {
+            System.out.println(k + " " + v);
+        });
     }
 }

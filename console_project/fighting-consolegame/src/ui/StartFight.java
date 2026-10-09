@@ -47,8 +47,8 @@ public class StartFight {
             int cnt = 1;
             while (role.isAlive() && enemy.isAlive()) {
                 System.out.println("⚔\uFE0F 第 " + (cnt++) + " 回合开始！ ");
-                System.out.println(role.getName() + ": " + role.getHp() + "/" + role.getMaxHp() + " HP  DEF " + role.getDf());
-                System.out.println(enemy.getName() + ": " + enemy.getHp() + "/" + enemy.getMaxHp() + " HP  DEF " + enemy.getDf()
+                System.out.println(role.getName() + ": " + showHp(role.getHp(), role.getMaxHp()) + role.getHp() + "/" + role.getMaxHp() + " HP  DEF " + role.getDf());
+                System.out.println(enemy.getName() + ": " + showHp(enemy.getHp(), enemy.getMaxHp()) + enemy.getHp() + "/" + enemy.getMaxHp() + " HP  DEF " + enemy.getDf()
                         + (enemy.getDfBuff() ? "  [防御姿态中]" : ""));
                 System.out.println("=====你的回合=====");
                 System.out.println("1. 普通攻击");
@@ -185,5 +185,19 @@ public class StartFight {
 
     public static int receiveAk(HeorCharacter role, int a) {
         return role.takeDamage(a);
+    }
+
+    public static String showHp(int hp, int maxHp) {
+        StringBuilder ret = new StringBuilder("[");
+        int w = 20;
+        int t = hp * w / maxHp;
+        for (int i = 0; i < t; i++) {
+            ret.append("█");
+        }
+        for (int i = 0; i < w - t; i++) {
+            ret.append(" ");
+        }
+        ret.append("]");
+        return ret.toString();
     }
 }
